@@ -1,0 +1,14 @@
+- content_for :title do
+  Social Networking Script
+- content_for :pagecss do
+  - stylesheet_link_tag "home/firefly.home.css"
+= render "common/session_nav_bar"
+- content_for :body do
+  .container.feeds
+    .col-md-7
+      = render "widgets/status_widget"
+      .post-container
+        - @posts.each do |post|
+          = render "widgets/post_card_widget", locals: {post: @post}
+- content_for :pagejs do
+  - javascript_include_tag "home/firefly.home.js"

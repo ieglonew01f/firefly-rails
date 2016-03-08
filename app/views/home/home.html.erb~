@@ -1,0 +1,19 @@
+<% content_for :title do %> Social Networking Script <% end %>
+
+<% content_for :pagecss do %>
+    <% stylesheet_link_tag "index/firefly.home.css" %>
+<% end %>
+
+<% content_for :pagecss do %>
+    <% stylesheet_link_tag "index/firefly.home.css" %>
+<% end %>
+
+<%= render "common/session_nav_bar" %>
+
+<% content_for :body do %>
+
+<% end %>
+
+<% content_for :pagejs do %>
+  <% javascript_include_tag "index/firefly.index.js" %>
+<% end %>

@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <%= render "common/head" %>
+	</head>
+	<body>
+		<%= yield :body %>
+    <%= render "common/footer" %>
+	</body>
+</html>

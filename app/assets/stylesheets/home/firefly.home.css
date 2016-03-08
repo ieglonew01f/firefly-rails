@@ -1,0 +1,99 @@
+/* Status Div */
+.tri-up {
+	position: relative;
+	margin-top: 15px;
+	padding-bottom: 10px;
+	border-top: 1px solid #E7E7E7;
+	background: #FFFFFF;
+}
+.tri-up:before, .tri-up:after {
+	content: "";
+	position: absolute;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-color: transparent;
+	border-top: 0;
+}
+.tri-up:before {
+  top: -11px;
+  left: 21px;
+  border-bottom-color: #E7E7E7;
+  border-width: 11px;
+}
+.tri-up:after {
+  top: -10px;
+  left: 22px;
+  border-bottom-color: #FFFFFF;
+  border-width: 10px;
+}
+.status-top-nav li.li-btns {
+  border-radius: 3px;
+  padding: 5px;
+  font-size: 14px;
+  color: #898989;
+  cursor: pointer;
+}
+.status-top-nav li.li-btns:hover,
+.status-top-nav li.li-btns:focus {
+  background: whitesmoke;
+}
+.card-status .media {
+  margin-top: 5px;
+}
+.btn-status-footer {
+  background: transparent;
+  color: rgba(200, 200, 200, 0.8);
+  text-shadow: 1px 4px 6px #FFF, 0 0 0 #000, 1px 4px 6px #EDEDED;
+  font-size: 15px;
+  padding: 3px 10px 3px 10px;
+}
+.btn-status-footer:focus, .btn-status-footer:hover {
+    text-decoration: none;
+    background: #EEEEEE;
+}
+.status-block .card-block {
+    padding: 10px 15px 10px 15px;
+}
+.status-top-nav li.li-breakers {
+  color:#E7E7E7;
+}
+/* EOF Status Div */
+
+
+/* Post div */
+.post-card-block .card-header {
+  background: white;
+}
+.post-card-block .media h5 {
+  font-size: 18px;
+  margin-bottom: 0px;
+}
+.post-btns ul li {
+  margin-right: 20px;
+}
+.post-btns li.li-btns:hover,
+.post-btns li.li-btns:focus {
+  background: whitesmoke;
+}
+.post-btns li.li-btns {
+  border-radius: 3px;
+  padding: 5px;
+  font-size: 14px;
+  color: #898989;
+  font-weight: normal;
+  cursor: pointer;
+}
+.post-btns ul {
+  margin-bottom: 0px;
+}
+.post-card-block .card-footer {
+  padding: 10px 15px 10px 15px;
+}
+.comment-font {
+  font-size: 14px;
+}
+.add-comment-container {
+  margin-top: 5px;
+}
+/* EOF Post div */

@@ -1,0 +1,69 @@
+<% content_for :title do %> Social Networking Script <% end %>
+
+<% content_for :pagecss do %>
+    <% stylesheet_link_tag "index/firefly.index.css" %>
+<% end %>
+
+<% content_for :pagecss do %>
+    <% stylesheet_link_tag "index/firefly.index.css" %>
+<% end %>
+
+<% content_for :body do %>
+  <div class="container has-top-margin">
+    <div class="row">
+      <div class="col-md-6 text-center">
+        <div class="logo-container">
+          <%= image_tag 'logo/logo.png' %>
+          <h2>Firefly</h2>
+          <p>Simple Social networking solution <br/> and easy deployment for everyone</p>
+          <p><a href="">Documentation</a> - <a href="">Features</a> - <a href="">Github</a> - <a href="">Help</a>
+        </div>
+      </div>
+      <div class="col-md-6 has-border-left">
+        <p class="top-label">Register your free account <br/> and try it out for free</p>
+        <%= form_for(@user) do |f| %>
+            <% if @user.errors.any? %>
+                <div id="error_explanation">
+                    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+                    <ul>
+                        <% @user.errors.full_messages.each do |message| %>
+                            <li><%= message %></li>
+                        <% end %>
+                    </ul>
+                </div>
+            <% end %>
+            <div class="form-inline">
+              <div class="form-group">
+                <input type="text" autofocus="autofocus" class="form-control" name="user[first_name]" id="first_name" autocomplete="off" placeholder="First Name">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" name="user[last_name]" id="last_name" autocomplete="off" placeholder="Last Name">
+              </div>
+            </div>
+            <div class="form-block">
+              <fieldset class="form-group">
+                <input type="email" class="form-control" name="user[email]" id="email" autocomplete="off" placeholder="Enter email">
+              </fieldset>
+              <fieldset class="form-group">
+                <input type="password" class="form-control" name="user[password]" id="password" autocomplete="off" placeholder="Password">
+              </fieldset>
+              <fieldset class="form-group">
+                <input type="password" class="form-control" name="user[password_confirmation]" id="password_confirmation" autocomplete="off" placeholder="Password Confirmation">
+              </fieldset>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" checked> I accept the terms and conditions
+                </label>
+              </div>
+              <input type="submit" name="commit" class="btn btn-primary btn-lg btn-wide" value="Register">
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<% content_for :pagejs do %>
+  <% javascript_include_tag "index/firefly.index.js" %>
+<% end %>

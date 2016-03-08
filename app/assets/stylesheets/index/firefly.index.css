@@ -1,0 +1,34 @@
+input#first_name {
+  width: 177px;
+}
+input#last_name {
+  width: 173px;
+}
+.text-center {
+  text-align: center;
+}
+.has-border-left {
+  border-left: 1px solid #DDDDDD;
+}
+.container.has-top-margin {
+  margin-top: 13%;
+}
+.form-block {
+  width: 355px;
+  margin-top:10px;
+}
+.btn-wide {
+  width: 100%;
+}
+.logo-container img {
+  width: 25%;
+}
+.logo-container h2 {
+  color: rgba(95, 95, 95, 0.8);
+  text-shadow: 1px 4px 6px #FFF, 0 0 0 #000, 1px 4px 6px #EDEDED;
+  font-size: 3.5em;
+}
+.top-label {
+  font-size: 26px;
+  font-weight: 300;
+}
