@@ -8,7 +8,8 @@
     .col-md-7
       = render "widgets/status_widget"
       .post-container
-        - @posts.each do |post|
-          = render "widgets/post_card_widget", locals: {post: @post}
+        = render "widgets/post_card_widget"
+      .templates
+        = render "handlebar_templates/post_card_template"
 - content_for :pagejs do
-  - javascript_include_tag "home/firefly.home.js"
+  - javascript_include_tag "helpers/posts/firefly.posts.js", "home/firefly.home.js"

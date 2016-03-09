@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  include ApplicationHelper
 
   # GET /posts
   # GET /posts.json
@@ -24,16 +25,15 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params)
+    post = Post.new
+    post.content = params[:post_text]
+    post.post_type = params[:post_type]
+    post.user_id = 1 #session user id here
 
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @post }
-      else
-        format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if post.save
+      success_json(200, 'Posted successfully', post)
+    else
+      error_json(422, 422, 'Looks like something went wrong while processing your request, please try again after sometime.')
     end
   end
 

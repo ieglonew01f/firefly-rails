@@ -1,4 +1,4 @@
-- @posts.each do |post|
+%script#post-card-template{:type => "text/x-handlebars-template"}
   .card.post-card-block
     .card-header.hidden
       Featured
@@ -15,7 +15,7 @@
               %i.icon-people
         .status-content
           %p.margin-top-sm
-            = post.content
+            {{content}}
         .post-stats.text-muted
           %small 1.5K Likes - 2 Comments - 5 Shares
         %hr.hr-md/

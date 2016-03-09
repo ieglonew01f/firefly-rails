@@ -9,9 +9,14 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+
+// @import Libaries
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
 //= require tether/tether.js
 //= require bootstrap/bootstrap.js
+//= require handlebars/handlebars.js
+
+// @import custom utils
+//= require helpers/global/firefly.utils.js
