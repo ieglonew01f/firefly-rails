@@ -49,7 +49,8 @@ test:
 #
 production:
   <<: *default
-  url: mysql://b4355cf000cda2:1ba8a775@us-cdbr-iron-east-03.cleardb.net/heroku_e4aa09c102d22a5?reconnect=true
+  adapter:  mysql
+  url:      mysql://b4355cf000cda2:1ba8a775@us-cdbr-iron-east-03.cleardb.net/heroku_e4aa09c102d22a5?reconnect=true
   database: heroku_e4aa09c102d22a5
   username: b4355cf000cda2
   password: 1ba8a775
