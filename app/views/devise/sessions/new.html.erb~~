@@ -20,7 +20,7 @@
         </div>
       </div>
       <div class="col-md-6 has-border-left">
-        <p class="top-label">Sign in and join the awesome</p>
+        <p class="top-label"><b>Sign in and join the awesome</b></p>
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <% if @user.errors.any? %>
                 <div id="error_explanation">
