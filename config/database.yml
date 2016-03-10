@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: firefly_production
-  username: firefly
-  password: <%= ENV['FIREFLY_DATABASE_PASSWORD'] %>
+  database: heroku_e4aa09c102d22a5
+  username: b4355cf000cda2
+  password: 1ba8a775
