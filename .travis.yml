@@ -3,5 +3,5 @@ rvm:
   - 2.2.3
 services:
   - mysql
-  before_script:
+before_script:
   - mysql -e 'create database firefly_test;'
