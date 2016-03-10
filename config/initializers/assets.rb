@@ -12,4 +12,4 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( index/firefly.index.js index/firefly.index.css)
 Rails.application.config.assets.precompile += %w( helpers/posts/firefly.posts.js )
 Rails.application.config.assets.precompile += %w( home/firefly.home.js home/firefly.home.css)
-config.assets.precompile << /\.(?:svg|eot|woff|ttf)\z/
+Rails.application.config.assets.precompile << /\.(?:svg|eot|woff|ttf)\z/
