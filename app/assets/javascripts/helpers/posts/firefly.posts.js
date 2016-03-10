@@ -19,9 +19,11 @@ FIREFLY.POSTS = (function() {
             data: post_data_builder(post_data_args)
         })
         .done(function(xhr) {
-            $('.post-container').prepend(post_card_template({
-                content: xhr.data.content
-            }));
+            $(post_card_template({
+                first_name: xhr.data.user.first_name,
+                last_name: xhr.data.user.last_name,
+                content: xhr.data.post.content
+            })).hide().prependTo('.post-container').fadeIn("slow");
         })
         .fail(function() {
 

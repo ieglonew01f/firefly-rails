@@ -7,4 +7,5 @@ class User < ActiveRecord::Base
   validates   :email, uniqueness: true
   validates   :first_name, :last_name, length: { maximum: 35 }
   has_many    :posts
+  has_one     :user_profile
 end

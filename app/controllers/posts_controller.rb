@@ -32,7 +32,15 @@ class PostsController < ApplicationController
     post.user_id = 1 #session user id here
 
     if post.save
-      success_json(200, 'Posted successfully', post)
+      post_data = {
+        user: {
+          first_name: current_user.first_name,
+          last_name: current_user.last_name,
+          profile_picture: current_user.user_profile.profile_picture,
+        },
+        post: post
+      }
+      success_json(200, 'Posted successfully', post_data)
     else
       error_json(422, 422, 'Looks like something went wrong while processing your request, please try again after sometime.')
     end
