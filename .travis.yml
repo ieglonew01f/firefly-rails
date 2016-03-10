@@ -3,5 +3,9 @@ rvm:
   - 2.2.3
 services:
   - mysql
+script: 
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - bundle exec rake db:test:prepare
+  - bundle exec rspec spec/
 before_script:
   - mysql -e 'create database firefly_test;'
