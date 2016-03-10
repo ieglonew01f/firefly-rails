@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'simple-line-icons';
-  src:  url('Simple-Line-Icons.eot?v=2.2.2');
-  src:  url('Simple-Line-Icons.eot?#iefix&v=2.2.2') format('embedded-opentype'),
-        url('Simple-Line-Icons.ttf?v=2.2.2') format('truetype'),
-        url('Simple-Line-Icons.woff2?v=2.2.2') format('woff2'),
-        url('Simple-Line-Icons.woff?v=2.2.2') format('woff'),
-        url('Simple-Line-Icons.svg?v=2.2.2#simple-line-icons') format('svg');
+  src:  url('/assets/line-icons/Simple-Line-Icons.eot?v=2.2.2');
+  src:  url('/assets/line-icons/Simple-Line-Icons.eot?#iefix&v=2.2.2') format('embedded-opentype'),
+        url('/assets/line-icons/Simple-Line-Icons.ttf?v=2.2.2') format('truetype'),
+        url('/assets/line-icons/Simple-Line-Icons.woff2?v=2.2.2') format('woff2'),
+        url('/assets/line-icons/Simple-Line-Icons.woff?v=2.2.2') format('woff'),
+        url('/assets/line-icons/Simple-Line-Icons.svg?v=2.2.2#simple-line-icons') format('svg');
   font-weight: normal;
   font-style: normal;
 }
