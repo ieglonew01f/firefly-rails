@@ -83,11 +83,11 @@ GEM
     mini_portile2 (2.0.0)
     minitest (5.8.3)
     multi_json (1.11.2)
+    mysql (2.9.1)
     mysql2 (0.3.20)
     nokogiri (1.6.7.1)
       mini_portile2 (~> 2.0.0.rc2)
     orm_adapter (0.5.0)
-    pg (0.18.4)
     puma (3.1.0)
     rack (1.6.4)
     rack-test (0.6.3)
@@ -174,8 +174,8 @@ DEPENDENCIES
   haml
   jbuilder (~> 2.0)
   jquery-rails
+  mysql
   mysql2 (~> 0.3.18)
-  pg
   puma
   rails (= 4.2.4)
   rails_12factor
