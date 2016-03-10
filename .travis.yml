@@ -6,6 +6,6 @@ services:
 script:
   - RAILS_ENV=test bundle exec rake db:migrate --trace
   - bundle exec rake db:test:prepare
-  - bundle exec rake spec/
+  - bundle exec rake test
 before_script:
   - mysql -e 'create database firefly_test;'
