@@ -97,3 +97,9 @@
   margin-top: 5px;
 }
 /* EOF Post div */
+
+/* Like buttons */
+.post-btns li.li-btns.unlike-btn-a {
+  color: #0275D8;
+}
+/* EOF Like buttons */

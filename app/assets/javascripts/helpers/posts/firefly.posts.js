@@ -54,7 +54,10 @@ FIREFLY.POSTS = (function() {
         $.ajax({
             url: '/comments',
             method: 'POST',
-            data: comment_data_builder(comment_data_args)
+            data: comment_data_builder(comment_data_args),
+            beforeSend: function() {
+
+            }
         })
         .done(function(xhr) {
             $(comment_card_template({
@@ -78,21 +81,33 @@ FIREFLY.POSTS = (function() {
 
     //like post handler
     var like_a_post = function(this_obj) {
+        var this_obj_parents = this_obj.parents('.post-card-block');
         var like_data_args = {
-            post_id: this_obj.parents('.post-card-block').data('id')
+            post_id: this_obj.parents('.post-card-block').data('id'),
+            post_likes: this_obj_parents.attr('data-likes')
         };
 
         //send ajax request
         $.ajax({
             url: '/post_likes',
             method: 'POST',
-            data: like_data_builder(like_data_args)
+            data: like_data_builder(like_data_args),
+            beforeSend: function(){
+                setTimeout(function(){
+                  this_obj.addClass('animated bounceIn');
+                }, 100);
+                this_obj.attr('class', 'li-btns unlike-btn-a');
+
+                //set like count
+                this_obj_parents.find('span.like-count').text(parseInt(like_data_args.post_likes) + 1);
+                this_obj_parents.attr('data-likes', parseInt(like_data_args.post_likes) + 1);
+            }
         })
         .done(function(xhr) {
-            this_obj.attr('class', 'li-btns unlike-btn-a');
+
         })
         .fail(function() {
-
+            this_obj.attr('class', 'li-btns like-btn-a');
         })
         .always(function() {
 
@@ -102,17 +117,28 @@ FIREFLY.POSTS = (function() {
     //unlike post handler
     var unlike_a_post = function(this_obj) {
         var post_id = this_obj.parents('.post-card-block').data('id');
+        var this_obj_parents = this_obj.parents('.post-card-block');
         //send ajax request
         $.ajax({
             url: '/post_likes/'+post_id,
             method: 'DELETE',
-            data: {post_id: post_id}
+            data: {post_id: post_id},
+            beforeSend: function(){
+                setTimeout(function(){
+                  this_obj.addClass('animated bounceIn');
+                }, 100);
+
+                this_obj.attr('class', 'li-btns like-btn-a');
+                //set like count
+                this_obj_parents.find('span.like-count').text(parseInt(this_obj_parents.attr('data-likes')) - 1);
+                this_obj_parents.attr('data-likes', parseInt(this_obj_parents.attr('data-likes')) - 1);
+            }
         })
         .done(function(xhr) {
-            this_obj.attr('class', 'li-btns like-btn-a');
+
         })
         .fail(function() {
-
+            this_obj.attr('class', 'li-btns unlike-btn-a');
         })
         .always(function() {
 

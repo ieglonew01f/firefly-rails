@@ -1,6 +1,14 @@
+- if !@this_post.nil?
+  - post_like = PostLike.where(user_id: current_user.id, post_id: @this_post.id).first
+  - if post_like
+    - like_btn_class = 'unlike-btn-a'
+  - else
+    - like_btn_class = 'like-btn-a'
+- else
+  - like_btn_class = 'like-btn-a'
 .post-btns
   %ul.list-inline
-    %li.li-btns.like-btn-a
+    %li.li-btns{:class => like_btn_class}
       %i.icon-like
       Like
     %li.li-btns

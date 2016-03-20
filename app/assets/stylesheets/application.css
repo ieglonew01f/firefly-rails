@@ -14,5 +14,6 @@
  *= require tether/tether.css
  *= require bootstrap/bootstrap.css
  *= require font-awesome
+ *= require animate/animate.css
  *= require firefly.global.css
  */

@@ -1,5 +1,5 @@
 %script#post-card-template{:type => "text/x-handlebars-template"}
-  .card.post-card-block{"data-id" => "{{post.id}}"}
+  .card.post-card-block{"data-id" => "{{post.id}}", "data-comments" => "0", "data-likes" => "0"}
     .card-header.hidden
       Featured
     .card-block.padding-bottom-xs
@@ -19,7 +19,10 @@
           %p.margin-top-sm
             {{post.content}}
         .post-stats.text-muted
-          %small 1.5K Likes - 2 Comments - 5 Shares
+          %small
+            %span.like-count
+              0
+            Likes - 0 Comments - 0 Shares
         %hr.hr-md/
         = render "widgets/posts/post_card_buttons"
     .card-footer
