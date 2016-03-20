@@ -24,16 +24,24 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @comment = Comment.new(comment_params)
+    comment = Comment.new
+    comment.comment = params[:comment]
+    comment.comment_type = params[:comment_type]
+    comment.post_id = params[:post_id]
+    comment.user_id = current_user.id
 
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
-        format.json { render :show, status: :created, location: @comment }
-      else
-        format.html { render :new }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
+    if comment.save
+      comment_data = {
+        user: {
+          first_name: current_user.first_name,
+          last_name: current_user.last_name,
+          profile_picture: current_user.user_profile.profile_picture,
+        },
+        comment: comment
+      }
+      success_json(200, 'Posted successfully', comment_data)
+    else
+      error_json(422, 422, 'Looks like something went wrong while processing your request, please try again after sometime.')
     end
   end
 

@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  include ApplicationHelper
 
   # GET /posts
   # GET /posts.json
@@ -29,7 +28,7 @@ class PostsController < ApplicationController
     post = Post.new
     post.content = params[:post_text]
     post.post_type = params[:post_type]
-    post.user_id = 1 #session user id here
+    post.user_id = current_user.id
 
     if post.save
       post_data = {

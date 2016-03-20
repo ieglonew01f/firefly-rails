@@ -6,10 +6,11 @@
 - content_for :body do
   .container.feeds
     .col-md-7
-      = render "widgets/status_widget"
+      = render "widgets/posts/status_widget"
       .post-container
-        = render "widgets/post_card_widget"
+        = render "widgets/posts/post_card_widget"
       .templates
-        = render "handlebar_templates/post_card_template"
+        = render "handlebar_templates/posts/post_card_template"
+        = render "handlebar_templates/posts/comment_card_template"
 - content_for :pagejs do
   - javascript_include_tag "helpers/posts/firefly.posts.js", "home/firefly.home.js"

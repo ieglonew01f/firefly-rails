@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root 'index#index'
 
   resources :posts
+  resources :post_likes
   resources :users do
     collection do
       post 'xyz'

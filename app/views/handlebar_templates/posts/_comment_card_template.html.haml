@@ -1,0 +1,13 @@
+%script#comment-card-template{:type => "text/x-handlebars-template"}
+  .media.comment-card{"data-id" => "{{comment.id}}"}
+    .media-left
+      %a{:href => "#"}
+        %img._bth.img{:height => "32", :src => "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xlf1/v/t1.0-1/c0.7.40.40/p40x40/10273906_10205850730174579_6462288405333286776_n.jpg?oh=80a61eae8dbf01ec40961a565926f892&oe=576C8D7A&__gda__=1462220614_59acec5ea13e344bf7c335c79e4b064c", :width => "32"}/
+    .media-body
+      %p.no-margin-bottom.comment-font
+        %a.comment-href{:href => ""}
+          {{comment.user.first_name}}
+          {{comment.user.last_name}}
+        \-
+        {{comment.comment}}
+      %small.text-muted 10 hours ago
