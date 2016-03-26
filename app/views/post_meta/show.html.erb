@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Meta data:</strong>
+  <%= @post_metum.meta_data %>
+</p>
+
+<p>
+  <strong>Meta:</strong>
+  <%= @post_metum.meta_id %>
+</p>
+
+<p>
+  <strong>Meta type:</strong>
+  <%= @post_metum.meta_type %>
+</p>
+
+<%= link_to 'Edit', edit_post_metum_path(@post_metum) %> |
+<%= link_to 'Back', post_meta_path %>

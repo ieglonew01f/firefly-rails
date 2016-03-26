@@ -7,7 +7,7 @@
             %i.icon-share-alt
             Share status
           %li.li-breakers |
-          %li.li-btns
+          %li.li-btns#post-photo
             %i.icon-cloud-upload
             Upload Photos
           %li.li-breakers |
@@ -30,3 +30,9 @@
       %button.btn.btn-default-outline.btn-sm.btn-status-footer
         %i.icon-location-pin.icons
       %button.btn.btn-primary-outline.btn-sm.pull-right#share-post Share
+      .loader.loader-inner.ball-pulse.pull-right#status-widget-loader.hide
+        %div
+        %div
+        %div
+.image-upload-form.hide
+  = render "widgets/posts/form_image_upload"

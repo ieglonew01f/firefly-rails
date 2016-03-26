@@ -17,6 +17,7 @@
 //= require tether/tether.js
 //= require bootstrap/bootstrap.js
 //= require handlebars/handlebars.js
+//= require ajaxform/jquery.form.js
 
 // @import custom utils
 //= require helpers/global/firefly.utils.js

@@ -1,5 +1,20 @@
-<h1>New User Profile</h1>
+<%= form_for @user_profile, html: { multipart: true } do |f| %>
+  <% if @user_profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user_profile.errors.count, "error") %> prohibited this pet from being saved:</h2>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', user_profiles_path %>
+      <ul>
+      <% @user_profile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :profile_picture %><br>
+    <%= f.file_field :profile_picture %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

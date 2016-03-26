@@ -33,6 +33,10 @@ gem "font-awesome-rails"
 #Use HAML
 gem 'haml'
 
+#Use image processing gems
+gem 'carrierwave', '~> 0.10.0'
+gem 'mini_magick', '~> 4.3'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

@@ -5,8 +5,9 @@ FIREFLY.POSTS = (function() {
 
     var utils                 = FIREFLY.UTILS,
         post_card_template    = utils.get_template($('#post-card-template')),
-        comment_card_template = utils.get_template($('#comment-card-template'));
-
+        comment_card_template = utils.get_template($('#comment-card-template')),
+        loader_template       = '<div class="loader loader-inner ball-pulse"><div></div><div></div><div></div></div>',
+        photo_upload_form     = $('#form-photo-upload');
     var share_post = function() {
         var post_data_args = {
             post_text: $('#text-status').val(),
@@ -17,7 +18,11 @@ FIREFLY.POSTS = (function() {
         $.ajax({
             url: '/posts',
             method: 'POST',
-            data: post_data_builder(post_data_args)
+            data: post_data_builder(post_data_args),
+            beforeSend: function() {
+                $('#share-post').hide();
+                $('#status-widget-loader').show();
+            }
         })
         .done(function(xhr) {
             $(post_card_template({
@@ -36,6 +41,8 @@ FIREFLY.POSTS = (function() {
 
         })
         .always(function() {
+            $('#share-post').show();
+            $('#status-widget-loader').hide();
             cleanup();
         });
     };
@@ -145,6 +152,81 @@ FIREFLY.POSTS = (function() {
         });
     };
 
+    //remove post handler
+    var remove_post = function(this_obj) {
+
+        var this_post = this_obj.parents('.post-card-block');
+        var post_id   = this_post.attr('data-id');
+
+
+        //send ajax request
+        $.ajax({
+            url: '/posts/'+post_id,
+            method: 'DELETE',
+            beforeSend: function(){
+                this_post.find('.loader-post-card-manage-buttons').show();
+                this_post.find('.post-card-manage-buttons-inner').hide();
+            }
+        })
+        .done(function(xhr) {
+            this_post.fadeOut("slow");
+        })
+        .fail(function() {
+
+        })
+        .always(function() {
+            this_post.find('.loader-post-card-manage-buttons').hide();
+            this_post.find('.post-card-manage-buttons-inner').show();
+        });
+    };
+
+
+    //edit post handler
+    var edit_post = function(this_obj) {
+
+        var this_post   = this_obj.parents('.post-card-block'),
+            post_id     = this_post.attr('data-id'),
+            new_content = this_post.find('.post-edit-text-box').val();
+
+        //send ajax request
+        $.ajax({
+            url: '/posts/'+post_id,
+            method: 'PATCH',
+            data: {post_id: post_id, post_content: new_content},
+            beforeSend: function(){
+                this_post.find('.post-card-edit-loader').show();
+                this_post.find('.post-edit-container').hide();
+            }
+        })
+        .done(function(xhr) {
+            this_post.find('.post-content p').text(new_content);
+        })
+        .fail(function() {
+
+        })
+        .always(function() {
+            this_post.find('.post-edit-container').hide();
+            this_post.find('.post-card-edit-loader').hide();
+            this_post.find('.post-content').show();
+        });
+
+    };
+
+    //image post
+    var image_post = function() {
+        photo_upload_form.ajaxForm({
+        		beforeSend: function() { //before sending form
+                console.log('before_send');
+        		},
+        		uploadProgress: function(event, position, total, percentComplete) { //on progress
+                console.log('uploadProgress');
+        		},
+        		complete: function(response) { // on complete
+                console.log(response.responseText);
+        		}
+      	});
+    }
+
     //like unlike data builder
     var like_data_builder = function(like_data) {
         return {
@@ -180,6 +262,9 @@ FIREFLY.POSTS = (function() {
         share_post: share_post,
         share_comment: share_comment,
         like_a_post: like_a_post,
-        unlike_a_post: unlike_a_post
+        unlike_a_post: unlike_a_post,
+        remove_post: remove_post,
+        edit_post: edit_post,
+        image_post: image_post
     };
 })();

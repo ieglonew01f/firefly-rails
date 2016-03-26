@@ -96,6 +96,23 @@
 .add-comment-container {
   margin-top: 5px;
 }
+.card-post .media {
+  overflow: visible;
+}
+.btn-caret {
+  border: 0;
+  padding: 0;
+  color: #DAD8D8;
+  font-size: 15px;
+  outline: 0;
+}
+.btn-caret:hover,
+.btn-caret:focus,
+.btn-caret:active {
+  background: transparent;
+  color: #0275d8;
+  outline: 0;
+}
 /* EOF Post div */
 
 /* Like buttons */

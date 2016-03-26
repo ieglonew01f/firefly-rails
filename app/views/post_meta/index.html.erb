@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Post Meta</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Meta data</th>
+      <th>Meta</th>
+      <th>Meta type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @post_meta.each do |post_metum| %>
+      <tr>
+        <td><%= post_metum.meta_data %></td>
+        <td><%= post_metum.meta_id %></td>
+        <td><%= post_metum.meta_type %></td>
+        <td><%= link_to 'Show', post_metum %></td>
+        <td><%= link_to 'Edit', edit_post_metum_path(post_metum) %></td>
+        <td><%= link_to 'Destroy', post_metum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Post metum', new_post_metum_path %>

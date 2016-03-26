@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  meta_data: MyText
+  meta_id: 1
+  meta_type: 1
+
+two:
+  meta_data: MyText
+  meta_id: 1
+  meta_type: 1

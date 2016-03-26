@@ -1,0 +1,2 @@
+module PostMetaHelper
+end

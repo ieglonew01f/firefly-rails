@@ -6,6 +6,7 @@
     .card-block.padding-bottom-xs
       .card-post
         .media
+          = render "widgets/posts/post_card_manage_buttons"
           .media-left
             %a{:href => "#"}
               %img._bth.img{:height => "40", :src => "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xlf1/v/t1.0-1/c0.7.40.40/p40x40/10273906_10205850730174579_6462288405333286776_n.jpg?oh=80a61eae8dbf01ec40961a565926f892&oe=576C8D7A&__gda__=1462220614_59acec5ea13e344bf7c335c79e4b064c", :width => "40"}/
@@ -16,9 +17,10 @@
             %small.text-muted
               10 hours ago
               %i.icon-people
-        .status-content
-          %p.margin-top-sm
+        .post-content
+          %p.margin-top-sm.post-content-inner
             = post.content
+        = render partial: "widgets/posts/post_card_edit_container", locals: {post_content: post.content}
         .post-stats.text-muted
           %small
             %span.like-count
@@ -36,7 +38,7 @@
             \- 5 Shares
         %hr.hr-md/
         = render "widgets/posts/post_card_buttons"
-    .card-footer
+    .card-footer.hide
       .comments-list
         = render partial: "widgets/posts/comment_widget", locals: {comments: post.comments}
       .add-comment-container
