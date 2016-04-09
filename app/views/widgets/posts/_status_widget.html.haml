@@ -21,6 +21,7 @@
             %img._bth.img{:height => "40", :src => "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xlf1/v/t1.0-1/c0.7.40.40/p40x40/10273906_10205850730174579_6462288405333286776_n.jpg?oh=80a61eae8dbf01ec40961a565926f892&oe=576C8D7A&__gda__=1462220614_59acec5ea13e344bf7c335c79e4b064c", :width => "40"}/
         .media-body
           %textarea.form-control-outline#text-status{:placeholder => "What's going on..", :rows => "3"}
+      .row.padding-left-sm#image-container.hide
   .card-footer
     .row.no-margin
       %button.btn.btn-default-outline.btn-sm.btn-status-footer
@@ -36,3 +37,13 @@
         %div
 .image-upload-form.hide
   = render "widgets/posts/form_image_upload"
+
+%script#post-image-container-template{:type => "text/x-handlebars-template"}
+  .col-sm-2.nplr
+    .panel-img
+      %img{:src => "{{image_thumb}}", :width => "64", :height => "64"}
+
+%script#post-image-next-container-template{:type => "text/x-handlebars-template"}
+  .col-sm-2.nplr
+    .panel-img.panel-img-add
+      %i.fa.fa-plus

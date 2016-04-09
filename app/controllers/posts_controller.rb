@@ -1,3 +1,5 @@
+require 'link_thumbnailer'
+
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
@@ -66,6 +68,20 @@ class PostsController < ApplicationController
     else
       error_json(422, 422, 'Looks like something went wrong while processing your request, please try again after sometime.')
     end
+  end
+
+  #Get expanding url
+  #this api crunches links and shits an object with images, headers etc
+  def expand_url
+    link = params[:link]
+
+    if link.blank?
+      error_json(422, 422, 'Looks like something went wrong while processing your request, please try again after sometime.')
+    else
+      page_object = LinkThumbnailer.generate(link)
+      success_json(200, 'Expanded url data', page_object)
+    end
+
   end
 
   private

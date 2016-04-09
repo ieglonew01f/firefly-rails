@@ -6,6 +6,8 @@ FIREFLY.POSTS = (function() {
     var utils                 = FIREFLY.UTILS,
         post_card_template    = utils.get_template($('#post-card-template')),
         comment_card_template = utils.get_template($('#comment-card-template')),
+        post_img_template     = utils.get_template($('#post-image-container-template')),
+        post_next_template    = utils.get_template($('#post-image-next-container-template')),
         loader_template       = '<div class="loader loader-inner ball-pulse"><div></div><div></div><div></div></div>',
         photo_upload_form     = $('#form-photo-upload');
     var share_post = function() {
@@ -222,10 +224,16 @@ FIREFLY.POSTS = (function() {
                 console.log('uploadProgress');
         		},
         		complete: function(response) { // on complete
-                console.log(response.responseText);
+                var image_data = JSON.parse(response.responseText).data.meta_data;
+                $('#image-container').show();
+                $(post_img_template({
+                    image_thumb: image_data.thumb.url
+                })).appendTo('#image-container');
+
+                $(post_next_template()).appendTo('#image-container');
         		}
       	});
-    }
+    };
 
     //like unlike data builder
     var like_data_builder = function(like_data) {

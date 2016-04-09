@@ -37,6 +37,9 @@ gem 'haml'
 gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 4.3'
 
+#Use url expander
+gem 'link_thumbnailer'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

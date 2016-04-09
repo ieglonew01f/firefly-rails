@@ -113,6 +113,27 @@
   color: #0275d8;
   outline: 0;
 }
+.panel-img {
+  width: 64px;
+  height: 64px;
+  border: 1px solid #E5E5E5;
+  border-radius: 3px;
+}
+.panel-img-add {
+  text-align: center;
+  padding-top: 26%;
+  color: #909090;
+}
+.panel-img-add:hover,
+.panel-img-add:focus,
+.panel-img-add:active {
+  background: #F9F9F9;
+  color: #3E85DB;
+  cursor: pointer;
+}
+#image-container .col-sm-2 {
+  width: 14.666667%;
+}
 /* EOF Post div */
 
 /* Like buttons */

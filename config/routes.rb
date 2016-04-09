@@ -6,7 +6,11 @@ Rails.application.routes.draw do
 
   root 'index#index'
 
-  resources :posts
+  resources :posts do
+    collection do
+      get 'expand_url'
+    end
+  end
   resources :post_likes
   resources :users do
     collection do

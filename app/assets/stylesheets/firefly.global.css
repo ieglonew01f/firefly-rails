@@ -93,6 +93,16 @@
 .margin-left-sm {
     margin-left: 10px;
 }
+.nplr {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+.padding-left-sm {
+    padding-left: 10px;
+}
+.padding-left-sm {
+    padding-right: 10px;
+}
  /* EOF Globals */
 
 /* CSS LOADER */
