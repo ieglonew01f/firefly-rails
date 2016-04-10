@@ -1,5 +1,5 @@
 # Change these
-server '128.199.72.42', roles: [:web, :app, :db], primary: true
+server '128.199.72.42', port: 3000, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:ieglonew01f/firefly-rails.git'
 set :application,     'firefly'
