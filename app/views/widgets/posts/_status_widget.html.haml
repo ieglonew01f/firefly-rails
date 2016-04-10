@@ -52,9 +52,7 @@
 %script#expanded-url-preview-template{:type => "text/x-handlebars-template"}
   .card.link-preview-card
     %a{:href => "{{url}}", :target => "_blank"}
-      %img.card-img-top.w100{"src" => "{{image_src}}", :height => "362"}
+      %img.card-img-top.w100{"src" => "{{image_src}}", :height => "300"}
     .card-block.link-preview-card-bottom
       %p.card-text.link-preview-title {{link_title}}
-      %small {{link_desc}}
-      %br
-      %small Source {{url}}
+      %small.link-preview-desc {{link_desc}}

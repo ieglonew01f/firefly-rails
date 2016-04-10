@@ -14,12 +14,13 @@
               {{post.user.first_name}}
               {{post.user.last_name}}
             %small.text-muted
-              10 hours ago
+              Just now
               %i.icon-people
         .post-content
           %p.margin-top-sm.post-content-inner
             {{post.content}}
-        = render partial: "widgets/posts/post_card_edit_container", locals: {post_content: '{{post.content}}'}
+        = render partial: "widgets/posts/post_card_edit_container", locals: { post_content: '{{post.content}}' }
+        = render partial: "widgets/posts/link_preview_container", locals: { link: '{{post.post_meta.link}}', title: '{{post.post_meta.title}}', description: '{{post.post_meta.description}}', image: '{{post.post_meta.image}}', has_post_meta_data: '{{post.has_post_meta_data}}'}
         .post-stats.text-muted
           %small
             %span.like-count

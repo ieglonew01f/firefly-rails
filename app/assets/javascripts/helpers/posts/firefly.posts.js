@@ -10,11 +10,29 @@ FIREFLY.POSTS = (function() {
         post_next_template         = utils.get_template($('#post-image-next-container-template')),
         post_link_preview_template = utils.get_template($('#expanded-url-preview-template')),
         loader_template            = '<div class="loader loader-inner ball-pulse"><div></div><div></div><div></div></div>',
-        photo_upload_form          = $('#form-photo-upload');
+        photo_upload_form          = $('#form-photo-upload'),
+        post_link                  = false,
+        parse_link                 = null,
+        post_meta                  = null;
+
     var share_post = function() {
+        var post_type = 1; //default normal text posts
+        //post type 2 link type post
+
+        var post_content = $('#text-status').val();
+
+        if (parse_link === post_content) {
+            post_content = null;
+        }
+
+        if(post_link) {
+            post_type = 2;
+        }
+
         var post_data_args = {
-            post_text: $('#text-status').val(),
-            type: 1
+            post_text: post_content,
+            type: post_type,
+            post_meta: post_meta
         };
 
         //send ajax request
@@ -28,6 +46,27 @@ FIREFLY.POSTS = (function() {
             }
         })
         .done(function(xhr) {
+            var post_meta = {};
+            var has_post_meta_data = 'hidden';
+
+            if (xhr.data.post.post_meta) {
+                post_meta = {
+                    title: xhr.data.post.post_meta.title,
+                    description: xhr.data.post.post_meta.description,
+                    image: xhr.data.post.post_meta.images[0].src,
+                    link: xhr.data.post.post_meta.url
+                };
+                has_post_meta_data = '';
+            }
+            else {
+                post_meta = {
+                    title: '',
+                    description: '',
+                    image: '',
+                    link: ''
+                };
+            }
+
             $(post_card_template({
                 post: {
                     user: {
@@ -36,6 +75,8 @@ FIREFLY.POSTS = (function() {
                     },
                     content: xhr.data.post.content,
                     id: xhr.data.post.id,
+                    post_meta: post_meta,
+                    has_post_meta_data: has_post_meta_data,
                     comments: {}
                 }
             })).hide().prependTo('.post-container').fadeIn("slow");
@@ -46,6 +87,8 @@ FIREFLY.POSTS = (function() {
         .always(function() {
             $('#share-post').show();
             $('#status-widget-loader').hide();
+            $('.link-preview-container').empty();
+            parse_link = null;
             cleanup();
         });
     };
@@ -224,6 +267,10 @@ FIREFLY.POSTS = (function() {
             data: {link: link},
             beforeSend: function(){
                 $('.link-preview-container').empty();
+                post_meta = null;
+                $('#share-post').hide();
+                $('#status-widget-loader').show();
+                parse_link = link;
             }
         })
         .done(function(xhr) {
@@ -233,12 +280,16 @@ FIREFLY.POSTS = (function() {
                 link_desc: xhr.data.description,
                 url: xhr.data.url
             })).hide().appendTo($('.link-preview-container')).fadeIn("slow");
+
+            post_link = true;
+            post_meta = xhr.data;
         })
         .fail(function() {
 
         })
         .always(function() {
-
+          $('#share-post').show();
+          $('#status-widget-loader').hide();
         });
     };
 
@@ -276,7 +327,8 @@ FIREFLY.POSTS = (function() {
 
         return {
             post_text: post_data.post_text,
-            post_type: post_data.type
+            post_type: post_data.type,
+            post_meta: post_data.post_meta
         };
     };
 

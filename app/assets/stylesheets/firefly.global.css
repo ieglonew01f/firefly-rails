@@ -106,6 +106,9 @@
 .w100 {
   width: 100%;
 }
+.border-none {
+  border: 0;
+}
  /* EOF Globals */
 
 /* CSS LOADER */

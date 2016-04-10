@@ -30,6 +30,7 @@ class PostsController < ApplicationController
     post = Post.new
     post.content = params[:post_text]
     post.post_type = params[:post_type]
+    post.post_meta = params[:post_meta]
     post.user_id = current_user.id
 
     if post.save
@@ -92,6 +93,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:content, :user_id, :post_type)
+      params.require(:post).permit(:content, :user_id, :post_meta, :post_type)
     end
 end

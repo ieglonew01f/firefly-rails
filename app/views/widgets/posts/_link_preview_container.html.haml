@@ -1,0 +1,8 @@
+.card.link-preview-card{:class => has_post_meta_data}
+  %a{:href => link, :target => "_blank"}
+    %img.card-img-top.w100{"src" => image, :height => "300"}
+  .card-block.link-preview-card-bottom
+    %p.card-text.link-preview-title
+      = title
+    %small.link-preview-desc
+      = description
