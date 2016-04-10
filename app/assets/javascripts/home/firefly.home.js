@@ -56,10 +56,12 @@ FIREFLY.HOME = (function() {
             this_post.find('.post-content').hide();
         });
 
+        //saving edited post
         $root.on('click', '.edit-post-save', function(){
             posts.edit_post($(this));
         });
 
+        //cancel btn
         $root.on('click', '.edit-post-cancel', function() {
             var self = $(this);
             var this_post = self.parents('.post-card-block');
@@ -75,6 +77,30 @@ FIREFLY.HOME = (function() {
         $('#post_metum_meta_data').change(function() {
             $('#form-photo-upload').submit();
         });
+
+        //pasting links
+        $('#text-status').on('paste', function () {
+            var self = $(this);
+            setTimeout(function () {
+                var link = $(self).val();
+                //test if pasted value is a link
+                if(isLink(link)) {
+                  //make ajax request to get link data
+                  posts.parse_link(link);
+                }
+            }, 100);
+        });
+
+    };
+
+    //test for link validity
+    var isLink = function(string) {
+      var regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+      if(!regex.test(string)) {
+        return false;
+      } else {
+        return true;
+      }
     };
 
     var init = function() {

@@ -134,6 +134,20 @@
 #image-container .col-sm-2 {
   width: 14.666667%;
 }
+.link-preview-title {
+  margin-bottom: 0;
+  font-weight: bold;
+}
+.link-preview-card {
+  height: 365px;
+}
+.link-preview-card-bottom {
+  position: relative;
+  z-index: 9999;
+  bottom: 100px;
+  height: 100px;
+  background: white;
+}
 /* EOF Post div */
 
 /* Like buttons */

@@ -103,6 +103,9 @@
 .padding-left-sm {
     padding-right: 10px;
 }
+.w100 {
+  width: 100%;
+}
  /* EOF Globals */
 
 /* CSS LOADER */

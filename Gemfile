@@ -40,6 +40,9 @@ gem 'mini_magick', '~> 4.3'
 #Use url expander
 gem 'link_thumbnailer'
 
+#Active admin for management
+gem 'activeadmin', github: 'activeadmin'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

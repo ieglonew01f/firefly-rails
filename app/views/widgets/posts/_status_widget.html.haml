@@ -22,6 +22,7 @@
         .media-body
           %textarea.form-control-outline#text-status{:placeholder => "What's going on..", :rows => "3"}
       .row.padding-left-sm#image-container.hide
+      .link-preview-container
   .card-footer
     .row.no-margin
       %button.btn.btn-default-outline.btn-sm.btn-status-footer
@@ -47,3 +48,13 @@
   .col-sm-2.nplr
     .panel-img.panel-img-add
       %i.fa.fa-plus
+
+%script#expanded-url-preview-template{:type => "text/x-handlebars-template"}
+  .card.link-preview-card
+    %a{:href => "{{url}}", :target => "_blank"}
+      %img.card-img-top.w100{"src" => "{{image_src}}", :height => "362"}
+    .card-block.link-preview-card-bottom
+      %p.card-text.link-preview-title {{link_title}}
+      %small {{link_desc}}
+      %br
+      %small Source {{url}}

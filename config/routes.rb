@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   resources :post_meta
   resources :comments
   resources :user_profiles
@@ -8,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :posts do
     collection do
-      get 'expand_url'
+      get 'parse_link'
     end
   end
   resources :post_likes

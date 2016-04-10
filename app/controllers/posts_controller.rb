@@ -72,7 +72,7 @@ class PostsController < ApplicationController
 
   #Get expanding url
   #this api crunches links and shits an object with images, headers etc
-  def expand_url
+  def parse_link
     link = params[:link]
 
     if link.blank?
