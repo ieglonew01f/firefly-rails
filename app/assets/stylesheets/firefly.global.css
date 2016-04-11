@@ -5,7 +5,7 @@
     font-family: 'Ubuntu', sans-serif !important;
     margin:0;
     color: #636363;
-    font-weight: 100;
+    font-weight: 300 !important;
  }
  @media (min-width: 1200px) {
    .container {
@@ -108,6 +108,9 @@
 }
 .border-none {
   border: 0;
+}
+small, .small {
+  font-weight: lighter;
 }
  /* EOF Globals */
 
@@ -1998,3 +2001,7 @@
 }
 
 /* EOF CSS LOADER */
+
+.dropdown-item {
+  font-weight: inherit;
+}
