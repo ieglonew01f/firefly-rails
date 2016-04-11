@@ -13,11 +13,13 @@ FIREFLY.POSTS = (function() {
         photo_upload_form          = $('#form-photo-upload'),
         post_link                  = false,
         parse_link                 = null,
-        post_meta                  = null;
+        post_meta                  = null,
+        is_image_post              = false;
 
     var share_post = function() {
         var post_type = 1; //default normal text posts
         //post type 2 link type post
+        //post type 3 image type post
 
         var post_content = $('#text-status').val();
 
@@ -26,8 +28,11 @@ FIREFLY.POSTS = (function() {
         }
 
         if(post_link) {
-            post_type = 2;
+            post_type = 2; //link type post
         }
+        if (is_image_post) {
+            post_type = 3;
+        } //image type post
 
         var post_data_args = {
             post_text: post_content,
@@ -49,14 +54,40 @@ FIREFLY.POSTS = (function() {
             var post_meta = {};
             var has_post_meta_data = 'hidden';
 
-            if (xhr.data.post.post_meta) {
-                post_meta = {
-                    title: xhr.data.post.post_meta.title,
-                    description: xhr.data.post.post_meta.description,
-                    image: xhr.data.post.post_meta.images[0].src,
-                    link: xhr.data.post.post_meta.url
-                };
-                has_post_meta_data = '';
+            if (xhr.data.post.post_type === "2" || xhr.data.post.post_type === 2) { //do this only for link type post
+              if (xhr.data.post.post_meta) {
+                  post_meta = {
+                      title: xhr.data.post.post_meta.title,
+                      description: xhr.data.post.post_meta.description,
+                      image: xhr.data.post.post_meta.images[0].src,
+                      link: xhr.data.post.post_meta.url
+                  };
+                  has_post_meta_data = '';
+              }
+            }
+            else if (xhr.data.post.post_type === "3" || xhr.data.post.post_type === 3) {
+              $('.photoset-grid-lightbox').photosetGrid({
+                  layout: '232',
+                  width: '100%',
+                  gutter: '3px',
+                  highresLinks: true,
+                  lowresWidth: 300,
+                  rel: 'gallery-01',
+                  borderActive: true,
+                  borderWidth: '3px',
+                  borderColor: '#000000',
+                  borderRadius: '3px',
+                  borderRemoveDouble: false,
+
+                  onInit: function(){},
+                  onComplete: function(){
+
+                      $('.photoset-grid-lightbox').css({
+                          'visibility': 'visible'
+                      });
+
+                  }
+              });
             }
             else {
                 post_meta = {
@@ -258,7 +289,7 @@ FIREFLY.POSTS = (function() {
     };
 
     //parse_link helper
-    var parse_link = function(link) {
+    var parse_linker = function(link) {
 
         //send ajax request
         $.ajax({
@@ -308,8 +339,9 @@ FIREFLY.POSTS = (function() {
                 $(post_img_template({
                     image_thumb: image_data.thumb.url
                 })).appendTo('#image-container');
-
+                $('.panel-img-add').parents('.col-sm-2').remove();
                 $(post_next_template()).appendTo('#image-container');
+                is_image_post = true;
         		}
       	});
     };
@@ -354,6 +386,6 @@ FIREFLY.POSTS = (function() {
         remove_post: remove_post,
         edit_post: edit_post,
         image_post: image_post,
-        parse_link: parse_link
+        parse_linker: parse_linker
     };
 })();

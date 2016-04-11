@@ -26,8 +26,11 @@
           %p.margin-top-sm.post-content-inner
             = post.content
         = render partial: "widgets/posts/post_card_edit_container", locals: { post_content: post.content }
-        - if !post.post_meta.blank?
+        - if !post.post_meta.blank? && post.post_type.to_i === 2 #do this only for link type post
           = render partial: "widgets/posts/link_preview_container", locals: { link: post.post_meta["url"], title: post.post_meta["title"], description: post.post_meta["description"], image: post.post_meta["images"]["0"]["src"], has_post_meta_data: nil}
+        - if !post.post_meta.blank? && post.post_type.to_i === 3 #do this only for image type post
+          = render partial: "widgets/posts/image_post_container", locals: { images: post.post_meta, has_post_meta_data: nil}
+
         .post-stats.text-muted
           %small
             %span.like-count

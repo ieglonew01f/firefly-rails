@@ -18,6 +18,8 @@
 //= require bootstrap/bootstrap.js
 //= require handlebars/handlebars.js
 //= require ajaxform/jquery.form.js
+//= require photoset-grid/jquery.colorbox.js
+//= require photoset-grid/jquery.photoset-grid.js
 
 // @import custom utils
 //= require helpers/global/firefly.utils.js

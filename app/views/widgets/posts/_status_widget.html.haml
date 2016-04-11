@@ -40,13 +40,13 @@
   = render "widgets/posts/form_image_upload"
 
 %script#post-image-container-template{:type => "text/x-handlebars-template"}
-  .col-sm-2.nplr
+  .col-sm-2.nplr.margin-top-xs
     .panel-img
       %img{:src => "{{image_thumb}}", :width => "64", :height => "64"}
 
 %script#post-image-next-container-template{:type => "text/x-handlebars-template"}
-  .col-sm-2.nplr
-    .panel-img.panel-img-add
+  .col-sm-2.nplr.margin-top-xs
+    .panel-img.panel-img-add#next-img-upload
       %i.fa.fa-plus
 
 %script#expanded-url-preview-template{:type => "text/x-handlebars-template"}

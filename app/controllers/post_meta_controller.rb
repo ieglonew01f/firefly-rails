@@ -24,8 +24,7 @@ class PostMetaController < ApplicationController
   # POST /post_meta
   # POST /post_meta.json
   def create
-    post_metum = PostMetum.new(post_metum_params)
-
+    post_metum = PostMetum.new(post_metum_params.merge(:user_id => current_user.id))
     if post_metum.save
       success_json(200, 'Meta saved successfully', post_metum)
     else

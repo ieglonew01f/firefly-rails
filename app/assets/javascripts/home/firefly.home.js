@@ -70,7 +70,7 @@ FIREFLY.HOME = (function() {
         });
 
         //upload image post handlers
-        $proot.on('click', '#post-photo', function() {
+        $proot.on('click', '#post-photo, #next-img-upload', function() {
             $('#post_metum_meta_data').click();
         });
 
@@ -86,7 +86,7 @@ FIREFLY.HOME = (function() {
                 //test if pasted value is a link
                 if(isLink(link)) {
                   //make ajax request to get link data
-                  posts.parse_link(link);
+                  posts.parse_linker(link);
                 }
             }, 100);
         });
@@ -103,9 +103,35 @@ FIREFLY.HOME = (function() {
       }
     };
 
+    var init_post_images = function () {
+        $('.photoset-grid-lightbox').photosetGrid({
+            layout: '232',
+            width: '100%',
+            gutter: '3px',
+            highresLinks: true,
+            lowresWidth: 300,
+            rel: 'gallery-01',
+            borderActive: true,
+            borderWidth: '3px',
+            borderColor: '#000000',
+            borderRadius: '3px',
+            borderRemoveDouble: false,
+
+            onInit: function(){},
+            onComplete: function(){
+
+                $('.photoset-grid-lightbox').css({
+                    'visibility': 'visible'
+                });
+
+            }
+        });
+    };
+
     var init = function() {
         event_listners();
         posts.image_post();
+        init_post_images();
     };
 
     return {

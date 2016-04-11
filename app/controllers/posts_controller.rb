@@ -33,6 +33,17 @@ class PostsController < ApplicationController
     post.post_meta = params[:post_meta]
     post.user_id = current_user.id
 
+    if post.post_type.to_s === "3" #if image type post then need to store image meta data
+        meta_hash = []
+        post_metum = PostMetum.where(user_id: current_user.id).find_each
+        post_metum.each do |meta|
+          meta_hash << meta.meta_data
+        end
+        post.post_meta = meta_hash
+        #delete metadata
+        PostMetum.where(user_id: current_user.id).destroy_all
+    end
+
     if post.save
       post_data = {
         user: {
