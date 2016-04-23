@@ -63,7 +63,5 @@ group :development do
 end
 
 group :production do
-  gem 'mysql'
-  gem 'rails_12factor'
-  gem 'puma'
+  gem 'unicorn'
 end
