@@ -4,6 +4,21 @@
     - break
   - comment_count += 1
   - user = User.find(comment.user_id)
+
+  - comment_like = CommentLike.where(:comment_id => comment.id, :user_id => current_user.id).first
+  - if comment_like
+    - like_class = "btn-comment-unlike"
+    - like_text = "Unlike"
+  - else
+    - like_class = "btn-comment-like"
+    - like_text = "Like"
+
+  - comment_like_count = CommentLike.where(:comment_id => comment.id).count
+  - if comment_like_count > 0
+    - comment_like_class = ''
+  - else
+    - comment_like_class = 'hidden';
+
   .media.comment-card{"data-id" => comment.id}
     .media-left
       %a{:href => "#"}
@@ -15,4 +30,9 @@
           = user.last_name
         \-
         = comment.comment
-      %small.text-muted 10 hours ago
+      %small.text-muted
+        = time_ago_in_words(comment.created_at)
+        %a.btn.btn-link{:href => "javascript:void(0)", :class => like_class}
+          = like_text
+        %i.icon-like.text-primary.tiny-like-hand{"data-likes" => comment_like_count, :class => comment_like_class}
+          = comment_like_count

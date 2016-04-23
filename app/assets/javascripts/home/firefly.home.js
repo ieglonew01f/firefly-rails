@@ -91,6 +91,15 @@ FIREFLY.HOME = (function() {
             }, 100);
         });
 
+        $(document).on('click', '.btn-comment-like', function() {
+            var self = $(this);
+            posts.like_a_comment($(this));
+        });
+
+        $(document).on('click', '.btn-comment-unlike', function() {
+            var self = $(this);
+            posts.unlike_a_comment($(this));
+        });
     };
 
     //test for link validity

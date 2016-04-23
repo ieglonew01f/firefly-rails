@@ -62,6 +62,9 @@
 
 
 /* Post div */
+.card-post .header {
+  line-height: 1;
+}
 .post-card-block .card-header {
   background: white;
 }
@@ -145,6 +148,20 @@
   overflow: hidden;
   text-overflow: ellipsis;
   margin-top:5px;
+}
+.comment-card .media-body {
+  line-height: 1.2;
+}
+.btn-comment-like,
+.btn-comment-unlike {
+  padding: 0;
+  font-weight: inherit;
+  font-size: 13px;
+  margin-left: 5px;
+}
+.tiny-like-hand {
+  font-size: 11px;
+  padding: 5px;
 }
 /* EOF Post div */
 

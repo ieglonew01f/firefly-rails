@@ -346,6 +346,92 @@ FIREFLY.POSTS = (function() {
       	});
     };
 
+    var like_a_comment = function(this_obj) {
+        var comment_id = this_obj.parents('.comment-card').attr('data-id');
+        var this_obj_parents = this_obj.parents('.comment-card');
+
+        //send ajax request
+        $.ajax({
+            url: '/comment_likes/',
+            method: 'POST',
+            data: {comment_id: comment_id},
+            beforeSend: function(){
+                this_obj.removeClass('btn-comment-like')
+                        .addClass('btn-comment-unlike')
+                        .text('Unlike');
+                this_obj_parents.find('.tiny-like-hand')
+                                .removeClass('hidden');
+                var current_likes_count = this_obj_parents.find('.tiny-like-hand')
+                                                          .attr('data-likes');
+                var new_likes_count = parseInt(current_likes_count) + 1;
+
+                this_obj_parents.find('.tiny-like-hand')
+                                .attr('data-likes', new_likes_count)
+                                .text(' '+new_likes_count);
+            }
+        })
+        .done(function(xhr) {
+
+        })
+        .fail(function() {
+            var current_likes_count = this_obj_parents.find('.tiny-like-hand')
+                                                      .attr('data-likes');
+            var new_likes_count = parseInt(current_likes_count) - 1;
+
+            this_obj_parents.find('.tiny-like-hand')
+                            .attr('data-likes', new_likes_count)
+                            .text(' '+new_likes_count);
+        })
+        .always(function() {
+
+        });
+    };
+
+    var unlike_a_comment = function(this_obj) {
+      var comment_id = this_obj.parents('.comment-card').attr('data-id');
+      var this_obj_parents = this_obj.parents('.comment-card');
+
+      //send ajax request
+      $.ajax({
+          url: '/comment_likes/'+comment_id,
+          method: 'DELETE',
+          data: {id: comment_id},
+          beforeSend: function() {
+              var new_likes_count = 0;
+
+              this_obj.removeClass('btn-comment-unlike')
+                      .addClass('btn-comment-like')
+                      .text('Like');
+
+              var current_likes_count = this_obj_parents.find('.tiny-like-hand')
+                                                        .attr('data-likes');
+
+              if (parseInt(current_likes_count) > 0) {
+                  new_likes_count = parseInt(current_likes_count) - 1;
+              }
+
+              this_obj_parents.find('.tiny-like-hand')
+                              .attr('data-likes', new_likes_count)
+                              .text(' '+new_likes_count);
+          }
+      })
+      .done(function(xhr) {
+
+      })
+      .fail(function() {
+          var current_likes_count = this_obj_parents.find('.tiny-like-hand')
+                                                    .attr('data-likes');
+          var new_likes_count = parseInt(current_likes_count) + 1;
+
+          this_obj_parents.find('.tiny-like-hand')
+                          .attr('data-likes', new_likes_count)
+                          .text(' '+new_likes_count);
+      })
+      .always(function() {
+
+      });
+    };
+
     //like unlike data builder
     var like_data_builder = function(like_data) {
         return {
@@ -386,6 +472,8 @@ FIREFLY.POSTS = (function() {
         remove_post: remove_post,
         edit_post: edit_post,
         image_post: image_post,
-        parse_linker: parse_linker
+        parse_linker: parse_linker,
+        like_a_comment: like_a_comment,
+        unlike_a_comment: unlike_a_comment
     };
 })();
