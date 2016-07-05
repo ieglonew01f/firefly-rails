@@ -1,0 +1,31 @@
+.profile-image-and-name-header {
+  position: relative;
+  top: 85px;
+}
+.image-thumb-profiler {
+  border: 2px solid #FFF;
+  border-radius: 5px;
+  width: 135px;
+  height: 135px;
+}
+.banner .jumbotron {
+  background: #278DE4;
+  border-radius: 0;
+}
+.banner .media {
+  color: #FFF;
+}
+.btn-white-outline {
+  color: #FFF;
+  background-color: transparent;
+  background-image: none;
+  border-color: #FDFDFD;
+}
+.btn-white-outline:hover {
+  color: #fff;
+  background-color: #ccc;
+  border-color: #ccc;
+}
+.profile-banner-buttons button{
+  margin-top: 5px;
+}

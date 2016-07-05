@@ -1,0 +1,32 @@
+- content_for :title do
+  Social Networking Script
+- content_for :pagecss do
+  - stylesheet_link_tag "home/firefly.home.css", "profile/firefly.profile.css"
+= render "common/session_nav_bar"
+- content_for :body do
+  .container.banner
+    .jumbotron
+      .profile-image-and-name-header
+        .media
+          %a.media-left{:href => "#"}
+            %img.media-object.image-thumb-profiler{:alt => "Generic placeholder image", "src" => @user.profile_picture}
+          .media-body
+            %h4.media-heading
+              = @user.first_name
+
+              = @user.last_name
+            %p
+              Cras sit amet nibh libero, in gravida nulla.
+            %p.profile-banner-buttons
+              %button.btn.btn-white-outline.btn-sm Add Friend
+              %button.btn.btn-white-outline.btn-sm Follow
+  .container.feeds
+    .col-md-7
+      = render "widgets/posts/status_widget"
+      .post-container
+        = render "widgets/posts/post_card_widget"
+      .templates
+        = render "handlebar_templates/posts/post_card_template"
+        = render "handlebar_templates/posts/comment_card_template"
+- content_for :pagejs do
+  - javascript_include_tag "helpers/posts/firefly.posts.js", "home/firefly.home.js"

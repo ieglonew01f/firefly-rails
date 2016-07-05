@@ -9,6 +9,11 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
+#index
 Rails.application.config.assets.precompile += %w( index/firefly.index.js index/firefly.index.css )
+#posts
 Rails.application.config.assets.precompile += %w( helpers/posts/firefly.posts.js )
+#home
 Rails.application.config.assets.precompile += %w( home/firefly.home.js home/firefly.home.css )
+#profile
+Rails.application.config.assets.precompile += %w( profile/firefly.profile.css )
