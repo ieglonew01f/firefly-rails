@@ -1,0 +1,15 @@
+%hr.margin-bottom-sm
+%span People you may know
+.people-lust.margin-top-sm
+  - @people.each do |person|
+    .media
+      %a.media-left{:href => "/profile/#{person.username}"}
+        %img.media-object{:src => person.profile_picture, :width => "48", :height => "48"}
+      .media-body
+        %button.btn.btn-sm.btn-primary-outline.pull-right#add_user{:type => "button"} Add
+        %span.media-heading
+          = person.first_name
+          = person.last_name
+        %br
+        %span.location
+          = person.location

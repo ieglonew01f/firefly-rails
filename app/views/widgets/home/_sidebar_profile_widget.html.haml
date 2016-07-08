@@ -1,0 +1,11 @@
+.media
+  %a.media-left{:href => "/profile/#{current_user.username}"}
+    %img.media-object{:src => current_user.profile_picture, :width => "68", :height => "68"}
+  .media-body
+    %h5.media-heading.no-margin-bottom
+      = current_user.first_name
+      = current_user.last_name
+    %span.location
+      = current_user.location
+    %br
+    %a{:href => "/profile/edit"} Edit profile
