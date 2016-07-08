@@ -102,7 +102,9 @@ FIREFLY.POSTS = (function() {
                 post: {
                     user: {
                         first_name: xhr.data.user.first_name,
-                        last_name: xhr.data.user.last_name
+                        last_name: xhr.data.user.last_name,
+                        username: xhr.data.user.username,
+                        profile_picture: xhr.data.user.profile_picture
                     },
                     content: xhr.data.post.content,
                     id: xhr.data.post.id,

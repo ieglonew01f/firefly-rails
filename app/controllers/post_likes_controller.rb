@@ -9,7 +9,7 @@ class PostLikesController < ApplicationController
         user: {
           first_name: current_user.first_name,
           last_name: current_user.last_name,
-          profile_picture: current_user.user_profile.profile_picture,
+          profile_picture: current_user.profile_picture,
         },
         post_like: post_like
       }

@@ -7,7 +7,7 @@
         .media
           = render "widgets/posts/post_card_manage_buttons"
           .media-left
-            %a{:href => "/profile/ieglonew01f"}
+            %a{:href => "/profile/{{post.user.username}}"}
               %img._bth.img{:height => "40", :src => "{{post.user.profile_picture}}", :width => "40"}/
           .media-body
             %h5

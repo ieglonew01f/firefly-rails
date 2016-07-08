@@ -6,11 +6,17 @@
     margin:0;
     color: #636363;
     font-weight: 300 !important;
+    background-color: #fbfbfb;
+    background: #fbfbfb;
  }
  @media (min-width: 1200px) {
    .container {
        max-width: 960px;
    }
+ }
+ .list-no-border li {
+   padding: 5px 10px;
+   border: 0;
  }
  .hr-md {
     margin-top: 5px;
@@ -30,6 +36,8 @@
  }
  nav {
     margin-bottom: 20px;
+    background-color: #FFF;
+    background: #FFF;
  }
  .container.feeds {
     padding: 0;

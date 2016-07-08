@@ -12,5 +12,8 @@
       .templates
         = render "handlebar_templates/posts/post_card_template"
         = render "handlebar_templates/posts/comment_card_template"
+    .col-md-4
+      = render "widgets/home/sidebar_profile_widget"
+      = render "widgets/home/sidebar_people_widget"
 - content_for :pagejs do
   - javascript_include_tag "helpers/posts/firefly.posts.js", "home/firefly.home.js"
