@@ -2,20 +2,25 @@
   .card-block.padding-bottom-xs
     %h4.card-title
       About
-    %p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
+    %p.card-text
+      = @user.about
   %ul.list-group.list-group-flush.list-no-border.margin-bottom-sm
     %li.list-group-item
       %i.icon-home
-      From Bangalore
+      From
+      = @user.home
     %li.list-group-item
       %i.icon-location-pin
-      Lives in Miami
+      Lives in
+      = @user.location
     %li.list-group-item
       %i.icon-graduation
-      College BMSCE
+      College
+      = @user.college
     %li.list-group-item
       %i.icon-notebook
-      Schooling KVS
+      Schooling
+      = @user.schooling
   //do stuff here later
   .card-block.hide
     %a.card-link{:href => "#"} Card link

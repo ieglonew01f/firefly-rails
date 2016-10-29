@@ -6,10 +6,13 @@
       %a.media-left{:href => "/profile/#{person.username}"}
         %img.media-object{:src => person.profile_picture, :width => "48", :height => "48"}
       .media-body
-        %button.btn.btn-sm.btn-primary-outline.pull-right#add_user{:type => "button"} Add
+        %button.btn.btn-sm.btn-primary-outline.pull-right.add_user{:type => "button", "data-id" => person.id}
+          Add
         %span.media-heading
           = person.first_name
           = person.last_name
         %br
         %span.location
           = person.location
+- content_for :pagejs do
+  - javascript_include_tag "helpers/people/firefly.people_helper.js", "people/firefly.people.js"

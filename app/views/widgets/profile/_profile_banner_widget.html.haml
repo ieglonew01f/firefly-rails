@@ -1,0 +1,17 @@
+.jumbotron
+  .profile-image-and-name-header
+    .media
+      %a.media-left{:href => "/profile/#{@user.username}"}
+        %img.media-object.image-thumb-profiler{:alt => "Generic placeholder image", "src" => @user.profile_picture}
+      .media-body
+        %h4.media-heading
+          = @user.first_name
+
+          = @user.last_name
+        %p
+          Cras sit amet nibh libero, in gravida nulla.
+        %p.profile-banner-buttons
+        - if current_user.id != @user.id
+          %button.btn.btn-white-outline.btn-sm{:class => @people_class, "data-id" => @user.id}
+            = @people_text
+          %button.btn.btn-white-outline.btn-sm Follow

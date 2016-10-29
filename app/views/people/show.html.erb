@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>By:</strong>
+  <%= @person.by_id %>
+</p>
+
+<p>
+  <strong>For:</strong>
+  <%= @person.for_id %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @person.status %>
+</p>
+
+<%= link_to 'Edit', edit_person_path(@person) %> |
+<%= link_to 'Back', people_path %>

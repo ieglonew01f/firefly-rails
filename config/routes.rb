@@ -14,10 +14,19 @@ Rails.application.routes.draw do
       get 'parse_link'
     end
   end
+
   resources :post_likes
+
   resources :users do
     collection do
       post 'xyz'
+    end
+  end
+
+  resources :people do
+    collection do
+      post 'add_friend'
+      post 'remove_friend'
     end
   end
 

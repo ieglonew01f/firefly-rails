@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160705163455) do
+ActiveRecord::Schema.define(version: 20160710090427) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -64,6 +64,24 @@ ActiveRecord::Schema.define(version: 20160705163455) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
+
+  create_table "followers", force: :cascade do |t|
+    t.integer  "follower_id",  limit: 4
+    t.integer  "following_id", limit: 4
+    t.integer  "status",       limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "people", force: :cascade do |t|
+    t.integer  "by_id",      limit: 4
+    t.integer  "for_id",     limit: 4
+    t.integer  "status",     limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "people", ["by_id", "for_id"], name: "index_people_on_by_id_and_for_id", unique: true, using: :btree
 
   create_table "post_likes", force: :cascade do |t|
     t.integer  "post_id",    limit: 4

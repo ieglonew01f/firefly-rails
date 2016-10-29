@@ -17,3 +17,5 @@ Rails.application.config.assets.precompile += %w( helpers/posts/firefly.posts.js
 Rails.application.config.assets.precompile += %w( home/firefly.home.js home/firefly.home.css )
 #profile
 Rails.application.config.assets.precompile += %w( profile/firefly.profile.css )
+#people
+Rails.application.config.assets.precompile += %w( helpers/people/firefly.people_helper.js people/firefly.people.js )
