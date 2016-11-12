@@ -15,6 +15,16 @@ FIREFLY.PEOPLE = (function() {
         $root.on('click', '.add_user_accept', function() {
             people_helper.accept_user($(this));
         });
+
+        //follow a user
+        $root.on('click', '.follow-user', function() {
+            people_helper.follow_user($(this));
+        });
+
+        //unfollow a user
+        $root.on('click', '.unfollow-user', function() {
+            people_helper.unfollow_user($(this));
+        });
     };
 
     var init = function() {

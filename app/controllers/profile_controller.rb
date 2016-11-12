@@ -5,6 +5,7 @@ class ProfileController < ApplicationController
     @people_class = ''
 
     person = Person.where("for_id = ? AND by_id = ?", @user.id, current_user.id).first
+    follower = Follower.where("follower_id = ? AND following_id = ?", current_user.id, @user.id).first
 
     if person
       if person.status == 0 #friend request sent
@@ -19,6 +20,15 @@ class ProfileController < ApplicationController
       @people_class = 'add_user'
       @people_text = 'Add Friend'
     end
+
+    if follower
+      @follower_text = 'UnFollow'
+      @follower_class = 'unfollow-user'
+    else
+      @follower_text = 'Follow'
+      @follower_class = 'follow-user'
+    end
+
     #todo some error handling if no username is found
   end
 end

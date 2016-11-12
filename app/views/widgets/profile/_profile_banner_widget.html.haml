@@ -14,4 +14,5 @@
         - if current_user.id != @user.id
           %button.btn.btn-white-outline.btn-sm{:class => @people_class, "data-id" => @user.id}
             = @people_text
-          %button.btn.btn-white-outline.btn-sm Follow
+          %button.btn.btn-white-outline.btn-sm{:class => @follower_class, "data-id" => @user.id}
+            = @follower_text

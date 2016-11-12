@@ -43,6 +43,10 @@ gem 'link_thumbnailer'
 #Active admin for management
 gem 'activeadmin', github: 'activeadmin'
 
+#Websockets
+gem 'faye-websocket', '0.10.0'
+gem 'websocket-rails'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

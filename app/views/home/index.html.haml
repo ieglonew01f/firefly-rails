@@ -15,5 +15,7 @@
     .col-md-4
       = render "widgets/home/sidebar_profile_widget"
       = render "widgets/home/sidebar_people_widget"
+  .container-sidebar
+    = render "widgets/common/chat_widget"
 - content_for :pagejs do
-  - javascript_include_tag "helpers/posts/firefly.posts.js", "home/firefly.home.js"
+  - javascript_include_tag "helpers/posts/firefly.posts.js", "helpers/chat/firefly.chat.js", "home/firefly.home.js"

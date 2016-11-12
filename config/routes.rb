@@ -27,6 +27,8 @@ Rails.application.routes.draw do
     collection do
       post 'add_friend'
       post 'remove_friend'
+      post 'follow_person'
+      post 'unfollow_person'
     end
   end
 

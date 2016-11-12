@@ -3,6 +3,7 @@ FIREFLY.HOME = {};
 FIREFLY.HOME = (function() {
     'use strict';
     var posts  = FIREFLY.POSTS,
+        chat   = FIREFLY.CHAT,
         $root  = $('.post-container'),
         $proot = $('.status-block');
 
@@ -100,6 +101,30 @@ FIREFLY.HOME = (function() {
             var self = $(this);
             posts.unlike_a_comment($(this));
         });
+
+        /* Ignore this part experimental */
+
+        var dispatcher = new WebSocketRails('localhost:3000/websocket');
+
+        var message = {
+            message: 'Hello Jane!',
+            target_id: 2
+        };
+        dispatcher.trigger('new_message', message);
+
+        dispatcher.bind('recieve_message', function (data) {
+            console.log(data);
+        });
+
+        /* Chat Handlers */
+        $(document).on('click', '.chat-people', function () {
+            chat.drawNewChatWindow();
+        });
+
+        $(document).on('click', '.chat-window .icon-close', function () {
+           chat.destroyChatWindow($(this));
+        });
+
     };
 
     //test for link validity

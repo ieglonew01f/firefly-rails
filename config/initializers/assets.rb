@@ -13,6 +13,8 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( index/firefly.index.js index/firefly.index.css )
 #posts
 Rails.application.config.assets.precompile += %w( helpers/posts/firefly.posts.js )
+#Chat
+Rails.application.config.assets.precompile += %w( helpers/chat/firefly.chat.js )
 #home
 Rails.application.config.assets.precompile += %w( home/firefly.home.js home/firefly.home.css )
 #profile

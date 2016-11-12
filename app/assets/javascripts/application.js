@@ -23,3 +23,5 @@
 
 // @import custom utils
 //= require helpers/global/firefly.utils.js
+//= require websocket_rails/main
+

@@ -2016,3 +2016,128 @@ small, .small {
 .dropdown-item {
   font-weight: inherit;
 }
+
+/* CSS Side Widget Chat Box */
+.chat-widget-container {
+    width: 245px;
+    height: 100%;
+    background: #fbfbfb;
+    position: absolute;
+    right: 0;
+    z-index: 999;
+    top: 0;
+    border-left: 1px solid #e5e5e5;
+}
+
+.chat-widget-container .media {
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 0px;
+    font-size: 12px;
+}
+
+.chat-widget-container .media:hover {
+    background: #FFF;
+}
+
+.badge {
+    padding: 2px 8px;
+    background: #0275d8;
+    font-size: 11px;
+    border-radius: 3px;
+    color: #FFF;
+    margin-top: 3px;
+}
+
+.online-marker-border {
+    border-right: 4px solid #0ae42f;
+}
+
+.online-marker-circle {
+    padding: 5px;
+    border-radius: 50px;
+    background: #32e41c;
+    width: 2px;
+    position: absolute;
+    left: 7px;
+    top: 8px;
+}
+
+.online-marker-circle-free-pos {
+    padding: 5px;
+    border-radius: 50px;
+    background: #32e41c;
+    width: 2px;
+    display: inline;
+}
+
+.new-message-btn {
+    padding: 15px;
+    text-align: center;
+    background: #0275d8;
+    color: #FFF;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.new-message-btn .icon-menu {
+    margin-right: 10px;
+}
+
+.new-message-btn:hover {
+    background: #526df6;
+}
+
+.chat-window {
+    width: 260px;
+    height: 305px;
+    background: white;
+    position: absolute;
+    bottom: 0;
+    right: 255px;
+    border-radius: 3px 3px 0 0;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
+}
+
+.chat-window .header {
+    padding: 5px 15px 5px 15px;
+    background: #fbfbfb;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.chat-window input {
+    outline: 0;
+    font-size: 12px;
+    padding: 10px;
+    width: 100%;
+    border: 0;
+    border-top: 1px solid #e5e5e5;
+}
+
+.chat-window .body {
+    height: 78%;
+    padding:10px;
+    overflow-y: scroll;
+}
+
+.chat-window .icon-close {
+    margin-top: 3px;
+    cursor: pointer;
+}
+
+.media.incomming-message,
+.media.outgoing-message {
+    font-size: 12px;
+}
+
+.media.incomming-message .media-body,
+.media.outgoing-message .media-body {
+    background: #fbfbfb;
+    border-radius: 6px;
+    padding: 5px;
+}
+
+.media.outgoing-message .media-body {
+    text-align: right;
+}

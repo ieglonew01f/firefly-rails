@@ -107,10 +107,66 @@ FIREFLY.PEOPLE_HELPER = (function() {
         });
     };
 
+    var follow_user = function(elem) {
+        //data to send
+        var data = {
+            following_id: elem.attr('data-id')
+        };
+        //send ajax request
+        $.ajax({
+            url: '/people/follow_person',
+            method: 'POST',
+            data: data,
+            beforeSend: function() {
+                elem.html('<i class="fa fa-circle-o-notch fa-spin"></i>');
+            }
+        })
+        .done(function(xhr) {
+            elem.html('Un Follow')
+                .removeClass('.follow-user')
+                .addClass('.unfollow-user');
+        })
+        .fail(function() {
+            //elem.html('Accept Request');
+        })
+        .always(function() {
+            elem.html('Un Follow');
+        });
+    };
+
+    var unfollow_user = function(elem) {
+        //data to send
+        var data = {
+            following_id: elem.attr('data-id')
+        };
+        //send ajax request
+        $.ajax({
+            url: '/people/unfollow_person',
+            method: 'POST',
+            data: data,
+            beforeSend: function() {
+                elem.html('<i class="fa fa-circle-o-notch fa-spin"></i>');
+            }
+        })
+        .done(function(xhr) {
+            elem.html('Follow')
+                .addClass('.follow-user')
+                .removeClass('.unfollow-user');
+        })
+        .fail(function() {
+            elem.html('Accept Request');
+        })
+        .always(function() {
+            elem.html('Follow');
+        });
+    };
+
     return {
         add_user: add_user,
         accept_user: accept_user,
         deny_user: deny_user,
-        remove_user: remove_user
+        remove_user: remove_user,
+        follow_user: follow_user,
+        unfollow_user: unfollow_user
     };
 })();

@@ -60,13 +60,34 @@ class PeopleController < InheritedResources::Base
     end
   end
 
-  #follow someone
+  #follow someone stalker ;)
   def follow_person
+    follower = Follower.where("follower_id = ? AND following_id = ?", current_user.id, params[:following_id]).first
 
+    if not followerp
+      follower = Follower.new
+      follower.follower_id = current_user.id
+      follower.following_id = params[:following_id]
+
+      if follower.save
+        success_json(200, 'User successfully followed', nil)
+      else
+        error_json(422, 422, 'Looks like something went wrong while processing your request, please try again after sometime.')
+      end
+    else
+      error_json(422, 422, 'Looks like something went wrong while processing your request, please try again after sometime.')
+    end
   end
 
+
   def unfollow_person
-    
+    follower = Follower.where("follower_id = ? AND following_id = ?", current_user.id, params[:following_id]).first
+
+    if follower.destroy
+      success_json(200, 'User successfully un followed', nil)
+    else
+      error_json(422, 422, 'Looks like something went wrong while processing your request, please try again after sometime.')
+    end
   end
 
   private
