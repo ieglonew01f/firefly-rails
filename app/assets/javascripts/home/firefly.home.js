@@ -106,24 +106,27 @@ FIREFLY.HOME = (function() {
 
         var dispatcher = new WebSocketRails('localhost:3000/websocket');
 
-        var message = {
-            message: 'Hello Jane!',
-            target_id: 2
-        };
-        dispatcher.trigger('new_message', message);
-
         dispatcher.bind('recieve_message', function (data) {
-            console.log(data);
+            chat.recieveNewMessage(data);
         });
 
         /* Chat Handlers */
+        /* Open chat window */
         $(document).on('click', '.chat-people', function () {
-            chat.drawNewChatWindow();
+            chat.drawNewChatWindow($(this));
         });
 
+        /* Close chat window */
         $(document).on('click', '.chat-window .icon-close', function () {
            chat.destroyChatWindow($(this));
         });
+
+        /* Send message */
+        $(document).on('keydown', '.chat-send-message-input', function( e ) {
+            if ( e.keyCode === 13 ) {
+                chat.sendNewMessage($(this), dispatcher);
+            }
+        } )
 
     };
 

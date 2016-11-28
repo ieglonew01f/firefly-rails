@@ -10,7 +10,7 @@ class ChatController < WebsocketRails::BaseController
 
   def new_message
     connection = WebsocketRails.users[message[:target_id]]
-    connection.send_message :recieve_message, {:message => 'yolo it works'}
+    connection.send_message :recieve_message, {:message => message[:message], :by_id => current_user.id}
   end
 
   def client_disconnected

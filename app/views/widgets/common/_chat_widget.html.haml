@@ -3,7 +3,7 @@
     %span.icon-menu
     %nbsp
     New Message
-  .media.chat-people
+  .media.chat-people{"data-fname" => "Rahul Kumar", "data-uid" => "2"}
     .media-left
       %a{:href => "#"}
         %img.media-object.online-marker-border{:src => "https://scontent.fblr1-1.fna.fbcdn.net/v/t1.0-1/p160x160/10603497_907842662641376_1760903653901894811_n.jpg?oh=5dee08fd0dcbdbd9771aae2d11c1bae9&oe=589A33DD", :width => 28}/
@@ -16,19 +16,24 @@
 
 
 %script#chat-window-template{:type => "text/x-handlebars-template"}
-  .chat-window{:style => "right: {{position}}px"}
+  .chat-window{:style => "right: {{position}}px", :id => "chat-window-id-{{user_id}}"}
     .header
       {{name}}
       .pull-right
         .icon-close
     .body
     .input
-      %input{:type => "text", :placeholder => "Type your message"}
+      %input.chat-send-message-input{:type => "text", :placeholder => "Type your message", "data-uid" => "{{user_id}}"}
 
 %script#chat-window-incomming-message{:type => "text/x-handlebars-template"}
   .media.incomming-message
     .media-left
       %a{:href => "#"}
         %img.media-object{:src => "https://scontent.fblr1-1.fna.fbcdn.net/v/t1.0-1/c0.46.160.160/p160x160/10273906_10205850730174579_6462288405333286776_n.jpg?oh=359b1ec332d116ebe74618b6e2037c48&oe=58A6F883", :width => 28}/
-    .media-bodyp
+    .media-body
+      {{message}}
 
+%script#chat-window-outgoing-message{:type => "text/x-handlebars-template"}
+  .row.outer-message
+    .outgoing-message
+      {{message}}
