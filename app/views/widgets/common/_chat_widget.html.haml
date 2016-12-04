@@ -3,17 +3,19 @@
     %span.icon-menu
     %nbsp
     New Message
-  .media.chat-people{"data-fname" => "Rahul Kumar", "data-uid" => "2"}
-    .media-left
-      %a{:href => "#"}
-        %img.media-object.online-marker-border{:src => "https://scontent.fblr1-1.fna.fbcdn.net/v/t1.0-1/p160x160/10603497_907842662641376_1760903653901894811_n.jpg?oh=5dee08fd0dcbdbd9771aae2d11c1bae9&oe=589A33DD", :width => 28}/
-    .media-body
-      .header
-        Rahul Kumar
-        %span.badge.pull-right
-          4
+
 .chat-window-holder
 
+%script#chat-people-template{:type => "text/x-handlebars-template"}
+  .media.chat-people{"data-fname" => "Rahul Kumar", "data-uid" => "{{user_id}}"}
+    .media-left
+      %a{:href => "#"}
+        %img.media-object.online-marker-border{:src => "{{profile_picture}}", :width => 28}/
+    .media-body
+      .header
+        {{full_name}}
+        %span.badge.pull-right.hide
+          4
 
 %script#chat-window-template{:type => "text/x-handlebars-template"}
   .chat-window{:style => "right: {{position}}px", :id => "chat-window-id-{{user_id}}"}

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :online_users
   resources :comment_likes
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

@@ -7,6 +7,7 @@ FIREFLY.CHAT = (function() {
         chat_window_template       = utils.get_template($('#chat-window-template')),
         chat_outgoing_template     = utils.get_template($('#chat-window-outgoing-message')),
         chat_incomming_template    = utils.get_template($('#chat-window-incomming-message')),
+        chat_people_template       = utils.get_template($('#chat-people-template')),
         chat_window_dom            = $('.chat-window-holder'),
         open_chat_windows_count    = 1,
         chat_window_buffer         = 30;
@@ -68,7 +69,6 @@ FIREFLY.CHAT = (function() {
 
     var recieveNewMessage = function (data) {
         /* Build and open chat window if not already present in dom */
-        console.log(data);
 
         if($('#chat-window-id-' + data.by_id).length === 0) {
             var buildData = {
@@ -87,10 +87,30 @@ FIREFLY.CHAT = (function() {
             );
     };
 
+    var drawUserOnline = function (data) {
+        var data = data.user_data;
+
+        if($('.chat-people[data-uid="' + data.user_id+ '"]').length === 0 && FIREFLY.GLOBALS.currentUserId !== data.user_id) {
+            $('.chat-widget-container').append(
+                $(chat_people_template({
+                    user_id: data.user_id,
+                    full_name: data.full_name,
+                    profile_picture: data.profile_picture
+                }))
+            );
+        }
+    };
+
+    var eraseUserOnline = function (data) {
+        $('.chat-people[data-uid="' + data.user_id+ '"]').destroy();
+    };
+
     return {
         drawNewChatWindow: drawNewChatWindow,
         destroyChatWindow: destroyChatWindow,
         sendNewMessage: sendNewMessage,
-        recieveNewMessage: recieveNewMessage
+        recieveNewMessage: recieveNewMessage,
+        drawUserOnline: drawUserOnline,
+        eraseUserOnline: eraseUserOnline
     };
 })();

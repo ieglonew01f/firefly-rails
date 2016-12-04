@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @online_user.user_id %>
+</p>
+
+<p>
+  <strong>Is online:</strong>
+  <%= @online_user.is_online %>
+</p>
+
+<%= link_to 'Edit', edit_online_user_path(@online_user) %> |
+<%= link_to 'Back', online_users_path %>

@@ -106,6 +106,23 @@ FIREFLY.HOME = (function() {
 
         var dispatcher = new WebSocketRails('localhost:3000/websocket');
 
+        dispatcher.bind('user_connected', function (data) {
+            chat.drawUserOnline(data);
+        });
+
+        //not working
+        dispatcher.bind('user_disconnected', function (data) {
+            chat.eraseUserOnline(data);
+        });
+
+        dispatcher.bind('set_online_users', function (data) {
+            $.each(data.user_data, function (i, user) {
+                chat.drawUserOnline({
+                    user_data: user
+                });
+            });
+        });
+
         dispatcher.bind('recieve_message', function (data) {
             chat.recieveNewMessage(data);
         });
