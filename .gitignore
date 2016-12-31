@@ -11,6 +11,8 @@ capybara-*.html
 **.orig
 rerun.txt
 pickle-email-*.html
+.idea/workspace.xml
+/config/database.yml
 
 #ignore public uploads folder
 /public/uploads
