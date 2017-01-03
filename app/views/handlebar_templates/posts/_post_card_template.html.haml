@@ -1,24 +1,23 @@
 %script#post-card-template{:type => "text/x-handlebars-template"}
   .card.post-card-block{"data-id" => "{{post.id}}", "data-comments" => "0", "data-likes" => "0"}
+    .card-profile-picture-holder
+      %a{:href => "/profile/{{post.user.username}}"}
+        %img._bth.img.border-radius-sm{:height => "55", :src => "{{post.user.profile_picture}}", :width => "55"}/
     .card-header.hidden
       Featured
     .card-block.padding-bottom-xs
       .card-post
-        .media
-          = render "widgets/posts/post_card_manage_buttons"
-          .media-left
+        = render "widgets/posts/post_card_manage_buttons"
+        .post-content
+          %p
+            {{post.content}}
+          %small.text-muted
             %a{:href => "/profile/{{post.user.username}}"}
-              %img._bth.img{:height => "40", :src => "{{post.user.profile_picture}}", :width => "40"}/
-          .media-body
-            %h5
               {{post.user.first_name}}
               {{post.user.last_name}}
-            %small.text-muted
-              Just now
-              %i.icon-people
-        .post-content
-          %p.margin-top-sm.post-content-inner
-            {{post.content}}
+            %br
+            Just now
+            %i.icon-people
         = render partial: "widgets/posts/post_card_edit_container", locals: { post_content: '{{post.content}}' }
         = render partial: "widgets/posts/link_preview_container", locals: { link: '{{post.post_meta.link}}', title: '{{post.post_meta.title}}', description: '{{post.post_meta.description}}', image: '{{post.post_meta.image}}', has_post_meta_data: '{{post.has_post_meta_data}}'}
         .post-stats.text-muted

@@ -9,6 +9,9 @@
     background-color: #f9fbfc;
     background: #f9fbfc;
  }
+ .border-radius-sm {
+     border-radius: 3px;
+ }
  @media (min-width: 1200px) {
    .container {
        max-width: 960px;
@@ -42,11 +45,21 @@
  .container.feeds {
     padding: 0;
  }
+ .card {
+     border: 0;
+     background: #fff;
+     box-shadow: 0 2px 4px 0 hsla(0,0%,80%,.5);
+ }
  .card-block{
     padding: 15px;
  }
  .card-footer{
     padding: 5px 10px 5px 5px;
+ }
+ .card-profile-picture-holder {
+     position: absolute;
+     left: -62px;
+     top: 3px;
  }
  .form-control-outline {
     outline: 0;
